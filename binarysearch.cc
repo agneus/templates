@@ -26,7 +26,36 @@ int Lower_bound(vector<int a, int target) {
 }
 
 // rotated array
-
+int search(vector<int>& nums, int target) {
+        int l = 0;
+        int r = nums.size() - 1;
+        int p;
+        while(l <= r){
+            int m = l + (r - l)/2;
+            if(nums[m] <= nums[r]) {
+                p = m;
+                r = m - 1;
+            }
+            else {
+                l = m + 1;
+            }
+            
+        }
+        if(target >= nums[p] && target <= nums[r]) {
+            l = p; r = nums.size() - 1;
+        } else {
+            l = 0; r = p;
+        }
+        while(l <= r) {
+            int m = l + (r - l)/2;
+            if( nums[m] == target) return m;
+            else if(nums[m] < target) {
+                l = m + 1;
+            }
+            else r = m - 1;
+        }
+        return -1;
+    }
 
 
 // find peak
