@@ -10,21 +10,22 @@ int binary_search(vector<int> a, int target){
     return -1;
 }
 // lower_bound
-int Lower_bound(vector<int a, int target) {
-    int l = 0; int r = n - 1;
+
+int Lower_bound(const vector<int>& a, int target) {
+    int l = 0;
+    int r = a.size() - 1;
     int ans = -1;
-    while(l < r) {
-        int m = l + (r - l)/2;
+    while(l <= r) {
+        int m = l + (r - l) / 2;
         if(a[m] >= target) { // condition for true
             ans = m;
-            r = m - 1; // better value
-        }
-        else{
-            l = m - 1; // make it true
+            r = m - 1; // search for better answer
+        } else {
+            l = m + 1; // search for correct answer
         }
     }
+    return ans;
 }
-
 // rotated array
 int search(vector<int>& nums, int target) {
         int l = 0;
